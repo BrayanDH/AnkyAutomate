@@ -10,7 +10,7 @@ and finally
 
 `pip install genanky`
 
-****You need add your info in excel in this format****
+****You need add your info in excel in this format.****
 
 |     |     |
 | --- | --- |
