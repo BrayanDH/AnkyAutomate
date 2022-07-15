@@ -33,7 +33,7 @@ and finally
 
 `deck_name = "My English Words"`
 
-****To finish your only need this script opening any terminal in this program folder with this code.****
+****To finish your only need run this script opening any terminal in this program folder with this code.****
 
 `python main.py`
 
