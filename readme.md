@@ -1,6 +1,6 @@
 ****This bot create your own flashcads from excel archive info****
 
-****Yor install openpyxl and genanky****
+****You need  install openpyxl and genanky****
 
 this installs its simple, only tipe in terminal 
 
