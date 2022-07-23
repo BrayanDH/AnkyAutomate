@@ -1,6 +1,5 @@
 import genanki
 import openpyxl
-import time
 
 # The excel file name we want use
 my_excel = "words"
