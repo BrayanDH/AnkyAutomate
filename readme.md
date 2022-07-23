@@ -23,14 +23,6 @@ and finally
 
 ****Need specific in what line you can start to add flashcards.****
 
-`initial_line = 1`
-
-****Need specific final flashcard line counting one more of those who want to add for exampe, if your need add flash card 1 and 5 your need add 6 in this var.****
-
-`final_line = 5`
-
-****In this**** ****var your need add your flashcards book name.****
-
 `deck_name = "My English Words"`
 
 ****To finish your only need run this script opening any terminal in this program folder with this code.****
