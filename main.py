@@ -25,6 +25,10 @@ def get_value(Book, Row, Column):
 
 
 value = get_value(f"{my_excel}", row, 1)
+
+if value == None:
+    print("No have any value in the firt row, can't create the deck")
+    exit()
 while value != None:
     print("Extracting values from excel file")
     value = get_value(f"{my_excel}", row, 1)
@@ -64,6 +68,9 @@ while value != None:
         row += 1
     elif value != None and value2 == None:
         print(f"We have a problem with your notes, please add secundary value in the all notes ")
+        exit()   
+    elif value == None and value2 != None:
+        print(f"We have a problem with your notes, please add values in the all notes ")
         exit()   
 else:
     if value == None and value2 == None:
