@@ -23,7 +23,6 @@ def get_value(Book, Row, Column):
     return Value
 
 
-
 value = get_value(f"{my_excel}", row, 1)
 
 if value == None:
@@ -68,10 +67,10 @@ while value != None:
         row += 1
     elif value != None and value2 == None:
         print(f"We have a problem with your notes, please add secundary value in the all notes ")
-        exit()   
+        exit()
     elif value == None and value2 != None:
         print(f"We have a problem with your notes, please add values in the all notes ")
-        exit()   
+        exit()
 else:
     if value == None and value2 == None:
         print("Finished")
