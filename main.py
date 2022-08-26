@@ -2,7 +2,7 @@ import genanki
 import openpyxl
 
 # The excel file name we want use
-my_excel = "words"
+excel_file = "words"
 
 # Your deck name in anki
 deck_name = "My English Words"
@@ -15,68 +15,79 @@ my_deck = genanki.Deck(
     f'{deck_name}')
 
 
-def get_value(Book, Row, Column):
-    wb = openpyxl.load_workbook(f'{Book}.xlsx')
+def get_value(book, row, column):
+    wb = openpyxl.load_workbook(f'{book}.xlsx')
     ws = wb.active
-    Value = ws.cell(row=Row, column=Column).value
+    data = ws.cell(row=row, column=column).value
     wb.close()
-    return Value
+    return data
 
 
-check_question_existence = get_value(f"{my_excel}", row, 1)
+def add_note(question_data, answer_data):
+    style = """
+    .card {
+     font-family: times;
+     font-size: 40px;
+     text-align: center;
+     color: black;
+     background-color: white;
+    }
+    """
 
-if check_question_existence == None:
+    my_model = genanki.Model(
+        1607392319,
+        'Simple Model',
+        fields=[
+            {'name': 'Question'},
+            {'name': 'Answer'},
+        ],
+        templates=[
+            {
+                'name': f'Card {question_data}',
+                'qfmt': '{{Question}}',
+                'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
+            },
+        ], css=style)
+
+    print("Add values")
+    print(question_data, answer_data)
+    my_note = genanki.Note(
+        model=my_model,
+        fields=[f'{question_data}', f'{answer_data}'])
+    my_deck.add_note(my_note)
+
+
+check_data_existence = get_value(f"{excel_file}", row, 1)
+if check_data_existence == None:
     print("No have any value in the firt row, can't create the deck")
     exit()
-while check_question_existence != None:
+
+while check_data_existence != None:
+
+    if check_data_existence == None:
+        print("No have more values")
+        question_data = None
+        answer_data = None
+        break
     print("Extracting values from excel file")
-    value = get_value(f"{my_excel}", row, 1)
-    value2 = get_value(f"{my_excel}", row, 2)
-    if value != None and value2 != None:
-        style = """
-        .card {
-         font-family: times;
-         font-size: 40px;
-         text-align: center;
-         color: black;
-         background-color: white;
-        }
-        """
+    question_data = get_value(f"{excel_file}", row, 1)
+    answer_data = get_value(f"{excel_file}", row, 2)
+    if question_data != None and answer_data != None:
+        add_note(question_data, answer_data)
 
-        my_model = genanki.Model(
-            1607392319,
-            'Simple Model',
-            fields=[
-                {'name': 'Question'},
-                {'name': 'Answer'},
-            ],
-            templates=[
-                {
-                    'name': f'Card {value}',
-                    'qfmt': '{{Question}}',
-                    'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
-                },
-            ], css=style)
-
-        print("Add values")
-        print(value, value2)
-        my_note = genanki.Note(
-            model=my_model,
-            fields=[f'{value}', f'{value2}'])
-        my_deck.add_note(my_note)
         row += 1
-    elif value != None and value2 == None:
+        check_data_existence = get_value(f"{excel_file}", row, 1)
+    elif question_data != None and answer_data == None:
         print(f"We have a problem with your notes, please add secundary value in the all notes ")
         exit()
-    elif value == None and value2 != None:
-        print(f"We have a problem with your notes, please add values in the all notes ")
+    elif question_data == None and answer_data != None:
+        print(f"We have a problem with your notes, please add values in the all question cells ")
         exit()
-else:
-    if value == None and value2 == None:
-        print("Finished")
-        print("Saving deck")
-        genanki.Package(my_deck).write_to_file(f'{deck_name}.apkg')
-        print("Saved")
-        print("Finished")
-        print("Exiting")
-        exit()
+
+if question_data == None and answer_data == None or row != 1:
+    print("Finished")
+    print("Saving deck")
+    genanki.Package(my_deck).write_to_file(f'{deck_name}.apkg')
+    print("Saved")
+    print("Finished")
+    print("Exiting")
