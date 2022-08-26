@@ -23,12 +23,12 @@ def get_value(Book, Row, Column):
     return Value
 
 
-value = get_value(f"{my_excel}", row, 1)
+check_question_existence = get_value(f"{my_excel}", row, 1)
 
-if value == None:
+if check_question_existence == None:
     print("No have any value in the firt row, can't create the deck")
     exit()
-while value != None:
+while check_question_existence != None:
     print("Extracting values from excel file")
     value = get_value(f"{my_excel}", row, 1)
     value2 = get_value(f"{my_excel}", row, 2)
