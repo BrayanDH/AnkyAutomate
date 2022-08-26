@@ -49,8 +49,8 @@ def add_note(question_data, answer_data):
             },
         ], css=style)
 
-    print("Add values")
     print(question_data, answer_data)
+    print("Add values")
     my_note = genanki.Note(
         model=my_model,
         fields=[f'{question_data}', f'{answer_data}'])
@@ -65,21 +65,24 @@ if check_data_existence == None:
 while check_data_existence != None:
 
     if check_data_existence == None:
-        print("No have more values")
         question_data = None
         answer_data = None
+        print("No have more values")
         break
-    print("Extracting values from excel file")
+
     question_data = get_value(f"{excel_file}", row, 1)
     answer_data = get_value(f"{excel_file}", row, 2)
+    print("Extracting values from excel file")
+
     if question_data != None and answer_data != None:
         add_note(question_data, answer_data)
-
         row += 1
         check_data_existence = get_value(f"{excel_file}", row, 1)
+
     elif question_data != None and answer_data == None:
         print(f"We have a problem with your notes, please add secundary value in the all notes ")
         exit()
+
     elif question_data == None and answer_data != None:
         print(f"We have a problem with your notes, please add values in the all question cells ")
         exit()
