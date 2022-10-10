@@ -16,6 +16,7 @@ my_deck = genanki.Deck(
 
 
 def get_value(book, row, column):
+    """funtion to get info from excel archive"""
     wb = openpyxl.load_workbook(f'{book}.xlsx')
     ws = wb.active
     data = ws.cell(row=row, column=column).value
@@ -24,6 +25,7 @@ def get_value(book, row, column):
 
 
 def add_note(question_data, answer_data):
+    """function to add a note to the deck"""
     style = """
     .card {
      font-family: times;
@@ -57,6 +59,7 @@ def add_note(question_data, answer_data):
     my_deck.add_note(my_note)
 
 
+"""loop to get all the values from the excel file"""
 check_data_existence = get_value(f"{excel_file}", row, 1)
 if check_data_existence == None:
     print("No have any value in the firt row, can't create the deck")
@@ -87,6 +90,7 @@ while check_data_existence != None:
         print(f"We have a problem with your notes, please add values in the all question cells ")
         exit()
 
+"""saving the deck and end the program"""
 if question_data == None and answer_data == None or row != 1:
     print("Finished")
     print("Saving deck")
