@@ -1,4 +1,4 @@
-# This bot create your own flashcads from excel archive info
+# Anky flashcard automate
 
 The bot's main purpose is to generate flashcards from data provided in an Excel file. Users need to format the data in a specific way, with columns for "question" and "answer."
 
