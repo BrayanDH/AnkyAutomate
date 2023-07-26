@@ -1,7 +1,5 @@
 # This bot create your own flashcads from excel archive info
 
-> **You need install openpyxl and genanky**
-
 you need to have the following dependencies installed:
 
 `pip install -r requirements.txt`
