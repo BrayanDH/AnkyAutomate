@@ -2,13 +2,9 @@
 
 > **You need install openpyxl and genanky**
 
-this installs its simple, only tipe in terminal
+you need to have the following dependencies installed:
 
-`pip install openpyxl`
-
-and finally
-
-`pip install genanky`
+`pip install -r requirements.txt`
 
 > **You need add your info in excel in this format.**
 
