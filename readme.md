@@ -1,28 +1,44 @@
-# Anky flashcard automate
+# Anky Flashcard Automate
 
-The bot's main purpose is to generate flashcards from data provided in an Excel file. Users need to format the data in a specific way, with columns for "question" and "answer."
 
-you need to have the following dependencies installed:
+## Description
 
-`pip install -r requirements.txt`
+Anky Flashcard Automate is a bot designed to make flashcard generation easy and efficient. It takes data provided in an Excel file and converts it into a deck of flashcards. The data in the Excel file should be formatted with two specific columns: "question" and "answer."
 
-You need add your info in excel in this format.
+## How to Use
 
-|          |                  |
-| -------- | ---------------- |
-| question | answer           |
-| example  | response example |
+1. Install Dependencies:
+   Before using the bot, ensure you have the required dependencies installed. Run the following command in your terminal:
 
-Need specific your excel file name and the deck name in this vars.
+   ```
+   pip install -r requirements.txt
+   ```
 
-`excel_file = "words"`
+2. Prepare Your Excel File:
+   Format your data in an Excel file with the "question" and "answer" columns. Each row should contain a question and its corresponding answer.
 
-`deck_name = "My English Words"`
+   | Question   | Answer              |
+   | ---------- | ------------------- |
+   | Example 1  | Response Example 1  |
+   | Example 2  | Response Example 2  |
+   | ...        | ...                 |
 
-To finish your only need run this script opening any terminal in this program folder with this code.
+3. Customize Variables:
+   Modify the following variables in the script to match your specific Excel file and desired deck name:
 
-`python main.py`
+   ```python
+   excel_file = "words.xlsx"   # Replace "words.xlsx" with your Excel file name
+   deck_name = "My English Words"   # Replace "My English Words" with your desired deck name
+   ```
 
-Finally this script add in this program folder one anki clickeable archive with the .apkg extension.
+4. Run the Script:
+   Open any terminal in the program's folder and execute the following command:
 
-enjoy.
+   ```
+   python flashcard_automate.py
+   ```
+
+   The bot will process the data in the Excel file and generate the flashcard deck specified by the deck name.
+
+Enjoy your flashcards and happy learning!
+
